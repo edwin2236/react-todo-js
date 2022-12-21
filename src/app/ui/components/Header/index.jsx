@@ -11,11 +11,12 @@ import {
   Typography,
 } from '@mui/material'
 import { StyledAppBar, StyledRouterLink } from './styles'
+import Router from '../../../core/utils/router'
 
 const pages = [
-  { name: 'Users', path: '/users' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'About', path: '/about' },
+  { name: 'Users', path: Router.users },
+  { name: 'Blog', path: Router.blog },
+  { name: 'About', path: Router.about },
 ]
 
 export default function Header() {
@@ -38,7 +39,7 @@ export default function Header() {
             variant="h6"
             noWrap
             component={StyledRouterLink}
-            to="/todos"
+            to={Router.todos}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },

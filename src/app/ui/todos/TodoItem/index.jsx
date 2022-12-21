@@ -6,26 +6,23 @@ import {
 import { Checkbox, IconButton } from '@mui/material'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+import DeleteTodoUseCase from '../../../domain/DeleteTodoUseCase'
+import UpdateTodoUseCase from '../../../domain/UpdateTodoUseCase'
 import { StyledCard, StyledTypography } from './styles'
 
 function TodoItem({ initialValue, onDelete }) {
   const [todo, setTodo] = useState(initialValue)
+  const updateTodoUseCase = new UpdateTodoUseCase()
+  const deleteTodoUseCase = new DeleteTodoUseCase()
   const label = { inputProps: { 'aria-label': todo.title } }
 
   const handleChange = async (event) => {
     const newValue = { ...todo, completed: event.target.checked }
-    fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
-      method: 'PUT',
-      body: newValue,
-    }).then(() => {
-      setTodo(newValue)
-    })
+    await updateTodoUseCase.call(newValue).then(() => setTodo(newValue))
   }
 
   const handleDelete = async () => {
-    await fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
-      method: 'DELETE',
-    }).then(() => {
+    await deleteTodoUseCase.call(todo).then(() => {
       onDelete(todo.id)
     })
   }
