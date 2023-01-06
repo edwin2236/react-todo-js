@@ -1,13 +1,13 @@
+import { useState } from 'react'
+import { Checkbox, IconButton } from '@mui/material'
 import {
   CheckBox as CheckBoxIcon,
   CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon,
   Delete as DeleteIcon,
 } from '@mui/icons-material'
-import { Checkbox, IconButton } from '@mui/material'
+import UpdateTodoUseCase from 'app/domain/UpdateTodoUseCase'
+import DeleteTodoUseCase from 'app/domain/DeleteTodoUseCase'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
-import DeleteTodoUseCase from '../../../domain/DeleteTodoUseCase'
-import UpdateTodoUseCase from '../../../domain/UpdateTodoUseCase'
 import { StyledCard, StyledTypography } from './styles'
 
 function TodoItem({ initialValue, onDelete }) {
@@ -22,13 +22,14 @@ function TodoItem({ initialValue, onDelete }) {
   }
 
   const handleDelete = async () => {
-    await deleteTodoUseCase.call(todo).then(() => {
-      onDelete(todo.id)
+    await deleteTodoUseCase.call(todo).then((todoId) => {
+      console.log({ todoId })
+      onDelete(todoId)
     })
   }
 
   return (
-    <StyledCard elevation={0}>
+    <StyledCard elevation={0} role="todo-item">
       <Checkbox
         {...label}
         icon={<CheckBoxOutlineBlankIcon />}
@@ -48,7 +49,7 @@ function TodoItem({ initialValue, onDelete }) {
       >
         {todo.title}
       </StyledTypography>
-      <IconButton color="error" onClick={handleDelete}>
+      <IconButton role="delete-task" color="error" onClick={handleDelete}>
         <DeleteIcon />
       </IconButton>
     </StyledCard>

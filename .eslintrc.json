@@ -3,6 +3,8 @@
     "browser": true,
     "es2021": true
   },
+  "globals": {
+  },
   "extends": [
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",

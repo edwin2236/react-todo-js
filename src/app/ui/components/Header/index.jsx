@@ -10,8 +10,8 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
+import Router from 'app/shared/utils/router'
 import { StyledAppBar, StyledRouterLink } from './styles'
-import Router from '../../../core/utils/router'
 
 const pages = [
   { name: 'Users', path: Router.users },

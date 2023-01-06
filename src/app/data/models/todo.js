@@ -4,6 +4,7 @@ export default class Todo {
    * @param {number} id
    * @param {string} title
    * @param {boolean} completed
+   * @returns {Todo}
    */
   constructor(userId, id, title, completed) {
     this.userId = userId

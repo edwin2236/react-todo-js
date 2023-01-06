@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import AddTodoUseCase from '../../../domain/AddTodoUseCase'
-import GetAllTodosUseCase from '../../../domain/GetAllTodosUseCase'
+import GetAllTodosUseCase from 'app/domain/GetAllTodosUseCase'
+import AddTodoUseCase from 'app/domain/AddTodoUseCase'
 
 export default function useTodos() {
   const [todos, setTodos] = useState([])
@@ -21,8 +21,8 @@ export default function useTodos() {
   }, [])
 
   const addTodo = async (todo) => {
-    addTodoUseCase.call(todo).then((todo) => {
-      const list = [...todos, todo]
+    addTodoUseCase.call(todo).then((newTodo) => {
+      const list = [...todos, newTodo]
       list.sort(sortDesc)
       setTodos(list)
     })

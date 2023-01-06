@@ -1,4 +1,4 @@
-import TodoRepository from '../data/repositories/todoRepository'
+import TodoRepository from 'app/data/repositories/todoRepository'
 
 export default class UpdateTodoUseCase {
   async call(todo) {

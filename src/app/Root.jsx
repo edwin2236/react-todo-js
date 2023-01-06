@@ -1,5 +1,5 @@
 import { StyledEngineProvider } from '@mui/material'
-import App from './ui/App'
+import App from 'app/ui/App'
 
 export default function Root() {
   return (

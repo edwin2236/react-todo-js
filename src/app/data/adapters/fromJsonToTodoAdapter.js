@@ -1,4 +1,4 @@
-import Todo from '../models/todo'
+import Todo from 'app/data/models/todo'
 
 /**
  *

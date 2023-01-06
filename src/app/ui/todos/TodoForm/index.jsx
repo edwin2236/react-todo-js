@@ -1,7 +1,7 @@
-import { AddCircle as AddCircleIcon } from '@mui/icons-material'
-import { IconButton, InputBase } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { IconButton, InputBase } from '@mui/material'
+import { AddCircle as AddCircleIcon } from '@mui/icons-material'
+import PropTypes from 'prop-types'
 import { StyledPaper } from './styles'
 
 function TodoForm({ onSubmit }) {
@@ -12,7 +12,7 @@ function TodoForm({ onSubmit }) {
 
     if (name.trim() !== '') {
       setName('')
-      onSubmit({ userId: 1, id: null, title: name.trim(), completed: false })
+      onSubmit({ userId: 1, title: name.trim(), completed: false })
     }
   }
 
@@ -26,7 +26,12 @@ function TodoForm({ onSubmit }) {
       onSubmit={handleSubmit}
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
     >
-      <IconButton sx={{ p: '10px' }} aria-label="add" type="submit">
+      <IconButton
+        sx={{ p: '10px' }}
+        aria-label="add"
+        type="submit"
+        role="add-task"
+      >
         <AddCircleIcon />
       </IconButton>
       <InputBase
