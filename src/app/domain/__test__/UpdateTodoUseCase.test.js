@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest'
-import { deleteTaskId, newTodo, removedTodo, updatedTodo } from 'src/__mocks__/todos/features'
+import { newTodo, updatedTodo } from 'src/__mocks__/todos/features'
 import TodoRepository from 'app/data/repositories/todoRepository'
 import UpdateTodoUseCase from '../UpdateTodoUseCase'
 
